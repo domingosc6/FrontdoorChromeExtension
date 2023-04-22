@@ -1,6 +1,7 @@
 const path = require("path");
 const HTMLPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin")
+var webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -36,7 +37,7 @@ module.exports = {
                 { from: "manifest.json", to: "../manifest.json" },
             ],
         }),
-        ...getHtmlPlugins(["index"]),
+        ...getHtmlPlugins(["index"])
     ],
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
