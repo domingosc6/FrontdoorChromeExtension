@@ -16,7 +16,7 @@ export const fetchData = async (input: string) => {
         temperature: 0,
     });
 
-    console.log(response);
+    //console.log(response);
 
     return response.data.choices[0].text;
 };

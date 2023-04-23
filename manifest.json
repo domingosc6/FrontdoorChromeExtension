@@ -6,5 +6,11 @@
     "action": {
         "default_popup": "js/index.html",
         "default_title": "Frontdoor Chrome Extension"
-    }
+    },
+    "permissions": [
+        "contextMenus",
+        "tabs",
+        "activeTab",
+        "scripting"
+    ]
 }
