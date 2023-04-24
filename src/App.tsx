@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './App.css';
 
-import fetchData from "./api/OpenAPIService";
+import APIService from "./api/APIService";
 
 function App() {
   const [completedSentence, setCompletedSentence] = useState("");
@@ -17,8 +17,9 @@ function App() {
             }
           }).then(injectionResults => {
             for (const {result} of injectionResults) {
-              fetchData(result!).then(completedSentence => {
-                setCompletedSentence(completedSentence!);
+              APIService.create(result!).then(completedSentence => {
+                console.log(completedSentence);
+                setCompletedSentence(completedSentence.data.newSummary.resumedText);
               });
             }
           });
