@@ -3,5 +3,6 @@ export default interface ISummaryData {
         prompt: string,
         resumedText: string,
         createdDate: Date,
+        _id: number,
     }
   }
