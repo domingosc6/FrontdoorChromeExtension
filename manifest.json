@@ -12,5 +12,9 @@
         "tabs",
         "activeTab",
         "scripting"
-    ]
+    ],
+    "background": {
+        "service_worker": "js/background.js"
+     },
+     "host_permissions": ["http://localhost/*"]
 }

@@ -16,10 +16,10 @@ export class SummaryController {
 
         const responseFromOpenAI = await this.apiService.createCompletion(promptFromRequest);
         const newSummaryJson = { prompt: promptFromRequest, resumedText: responseFromOpenAI, createdAt: Date.now() }
-        const newSummary = await this.summaryService.createSummary(newSummaryJson);
+        const summary = await this.summaryService.createSummary(newSummaryJson);
 
         return response.status(HttpStatus.CREATED).json({
-            newSummary
+            summary
         })
     }
 
@@ -30,6 +30,16 @@ export class SummaryController {
 
         return response.status(HttpStatus.CREATED).json({
             allSummaries
+        })
+    }
+
+    @Get('/:id')
+    async GetSummary(@Param('id') id, @Res() response) {
+    
+        const summary = await this.summaryService.readSummary(id);
+
+        return response.status(HttpStatus.OK).json({
+            summary
         })
     }
 }

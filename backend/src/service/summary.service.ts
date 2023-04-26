@@ -24,10 +24,9 @@ export class SummaryService {
     }
 
     async readSummary(id): Promise<any> {
-        if (id.id) {
-            return this.summaryModel.findOne({ _id: id.id });
+        if (id) {
+            return this.summaryModel.findOne({ _id: id });
         }
-        return this.getAll();
     }
 
     async update(id, summary: Summary): Promise<Summary> {
