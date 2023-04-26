@@ -15,9 +15,11 @@ import APIService from "../api/APIService";
                     }
                 }).then(injectionResults => {
                     for (const {result} of injectionResults) {
-                        APIService.create(result!).then(completedSentence => {
-                            return completedSentence.data.summary;
-                        });
+                        if (result != '') {
+                            APIService.create(result!).then(completedSentence => {
+                                return completedSentence.data.summary;
+                            });
+                        }
                     }
                 });
             }

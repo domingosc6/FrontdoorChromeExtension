@@ -12,11 +12,3 @@ chrome.contextMenus.onClicked.addListener( (clickData) => {
         RequestSummaryController.useHandleClick();
     }
 })
-
-//chrome.contextMenus.remove('ResumeText', function() {
-//    chrome.contextMenus.create({
-//      title: "Resume this text",
-//      id: 'ResumeText',
-//      contexts: ["selection"]
-//    });
-//  });
