@@ -8,7 +8,6 @@ const getAll = () => {
   
 const create = (prompt: string) => {
   const promptJson = {prompt: prompt}
-  console.log(promptJson);
   return http.post<ISummaryData>("/summary/request", promptJson);
 };
 

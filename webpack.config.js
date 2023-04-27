@@ -1,11 +1,12 @@
 const path = require("path");
 const HTMLPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
         index: "./src/index.tsx",
-        background: "./src/background.ts"
+        background: "./src/background.ts",
     },
     mode: "production",
     module: {
@@ -37,7 +38,14 @@ module.exports = {
                 { from: "manifest.json", to: "../manifest.json" },
             ],
         }),
-        ...getHtmlPlugins(["index"])
+        ...getHtmlPlugins(["index"]),
+        new MiniCssExtractPlugin({
+            filename: (pathData) => {
+              if (pathData.chunk.name === "tooltip") {
+                return 'tooltip.css'
+              }
+            },
+          }),
     ],
     resolve: {
         extensions: [".tsx", ".ts", ".js"],

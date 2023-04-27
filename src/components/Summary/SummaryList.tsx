@@ -21,8 +21,6 @@ export default function SummaryList() {
             try {
                 if (isBusy) {
                     await APIService.getAll().then(response => {
-                        console.log("This is the response from the API");
-                        console.log(response);
                         setSummaries(response.data);
                     }).then(() => {            
                         setBusy(false);

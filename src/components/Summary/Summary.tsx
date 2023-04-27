@@ -16,16 +16,11 @@ export default function Summary() {
     const navigate = useNavigate();
     const [isBusy, setBusy] = useState(true);
     const [summaryInfo, setSummaryInfo] = useState<ISummaryData>();
-    console.log("I've entered here for running a specific summary");
     React.useEffect(() => {
         async function fetchData() {
             try {
                 if (isBusy) {
                     await APIService.get(id).then(response => {
-                        console.log("This is the id");
-                        console.log(id);
-                        console.log("This is the response");
-                        console.log(response.data);
                         setSummaryInfo(response.data);
                     }).then(() => {    
                         setBusy(false);

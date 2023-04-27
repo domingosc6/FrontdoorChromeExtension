@@ -15,5 +15,9 @@
     ],
     "background": {
         "service_worker": "js/background.js"
-     }
+     },
+    "web_accessible_resources": [{
+        "resources": ["tooltip.css"],
+        "matches": ["<all_urls>"]
+    }]
 }
