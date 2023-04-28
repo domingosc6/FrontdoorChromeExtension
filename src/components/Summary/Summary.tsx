@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Typography from '@mui/material/Typography';
-import { Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
@@ -34,35 +34,51 @@ export default function Summary() {
         fetchData();
     }, [navigate, isBusy]);
 
+    const goBack = () => {
+		navigate(-1);
+	}
+    const GoBackButton = <Button
+    type="submit"
+    onClick={goBack}
+    variant="contained"
+    sx={{ mt: 3, mb: 2, ml: 1}}>Go Back</Button>
+
     return (
         <Container>
             {isBusy ? (
                 <LoadingSpinner /> 
               ) : (
                 <>
-                    <Grid item xs={12} md={12} marginTop={2}>
+                    <Grid item marginTop={10}>
                         <CardActionArea component="a" href="#">
                             <Card sx={{ display: 'flex' }}>
                                 <CardContent sx={{ flex: 1 }}>
                                     <Typography variant="subtitle1" color="primary">
-                                        Summary: {summaryInfo!.summary.resumedText}
+                                        <b>Prompt:</b> {summaryInfo!.summary.prompt}
                                     </Typography>
                                 </CardContent>
                             </Card>
                         </CardActionArea>
                     </Grid>
-                    <Grid container spacing={2} marginTop={2}>
+                    <Grid item marginTop={2}>
+                        <CardActionArea component="a" href="#">
+                            <Card sx={{ display: 'flex' }}>
+                                <CardContent sx={{ flex: 1 }}>
+                                    <Typography variant="subtitle1" color="primary">
+                                       <b>Summary:</b>  {summaryInfo!.summary.resumedText}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </CardActionArea>
+                    </Grid>
+                    <Grid container spacing={2} marginTop={2} marginBottom={2}>
                         <Grid item xs={12} md={6}>
-                            <Typography variant="subtitle1" color="primary">
-                                Prompt: {summaryInfo!.summary.prompt}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                            <Typography variant="subtitle1" color="primary">
-                                Created: {summaryInfo!.summary.createdDate}
+                            <Typography variant="subtitle1" color="white">
+                                <b>Created:</b> {summaryInfo!.summary.createdDate}
                             </Typography>
                         </Grid>
                     </Grid>
+                    {GoBackButton}
                 </>
             )}
         </Container>

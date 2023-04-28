@@ -5,11 +5,11 @@ import Header from "./components/Navbar/Header";
 function App() {
 
   return (
-    <div className="container">
+    <div className="app">
       <Header/>
       <Index/>
     </div>
-    
+
   );
 }
 

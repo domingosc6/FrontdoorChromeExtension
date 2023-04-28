@@ -1,17 +1,23 @@
 import SummaryList from "./Summary/SummaryList";
+
+import AddNewButton from './AddNewButton';
+import { MemoryRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import { Button, ButtonGroup } from '@mui/material';
 import Summary from "./Summary/Summary";
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 
 export default function Index() {
     return (
         <Router>
-            <nav>
-                <Link to="/summaries">All Summaries</Link>
-                <Link to="/summary/:id">Summary</Link>
-            </nav>
+            <Button
+                        type="submit"
+                        variant="contained"
+                        sx={{ mt: 10, mb: 2, ml: 1}} component={Link} to="/summaries">All Summaries</Button>
             <Routes>
+                <Route path ="/">
+                    
+                </Route>
                 <Route path="/summaries" element={<SummaryList />} />
-                <Route path="/summary/:id" element={<Summary />} />
+                <Route path="/summary/:id" element={<Summary/>} />
             </Routes>
         </Router>
     )
